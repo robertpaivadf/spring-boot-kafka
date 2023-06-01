@@ -6,11 +6,12 @@ import com.store.car.repository.CarPostRepository;
 import com.store.car.repository.OwnerPostRepository;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-
+@Service
 public class CarPostServiceImpl implements CarPostService{
 
     @Autowired
@@ -21,18 +22,21 @@ public class CarPostServiceImpl implements CarPostService{
 
     @Override
     public void newPostDetails(CarPostDTO carPostDTO) {
-
+        CarPostEntity carPostEntity = mapCarDTOToEntity(carPostDTO);
+        carPostRepository.save(carPostEntity);
     }
+
+
 
     @Override
     public List<CarPostDTO> getCarSales() {
         List<CarPostDTO> listCarsSales = new ArrayList<>();
-        carPostRepository.findAll().forEach(item->{ listCarsSales.add(mapCarEntityToDTO(item)); });
+        carPostRepository.findAll().forEach(item-> listCarsSales.add(mapCarEntityToDTO(item)));
         return listCarsSales;
     }
 
     @Override
-    public void changeCarSales(CarPostDTO carPostDTO, long postId) {
+    public void changeCarSale(CarPostDTO carPostDTO, long postId) {
         carPostRepository.findById(postId).ifPresentOrElse(item->{
             item.setDescription(carPostDTO.getDescription());
             item.setContact(carPostDTO.getContact());
@@ -40,9 +44,7 @@ public class CarPostServiceImpl implements CarPostService{
             item.setBrand(carPostDTO.getBrand());
             item.setEngineVersion(carPostDTO.getEngineVersion());
             item.setModel(carPostDTO.getModel());
-
             carPostRepository.save(item);
-
         }, ()-> {
             throw new NoSuchElementException();
         });
@@ -57,5 +59,10 @@ public class CarPostServiceImpl implements CarPostService{
         CarPostDTO carPostDTO = new CarPostDTO();
         BeanUtils.copyProperties(item, carPostDTO);
         return carPostDTO;
+    }
+    private CarPostEntity mapCarDTOToEntity(CarPostDTO item) {
+        CarPostEntity carPostEntity = new CarPostEntity();
+        BeanUtils.copyProperties(item, carPostEntity);
+        return carPostEntity;
     }
 }

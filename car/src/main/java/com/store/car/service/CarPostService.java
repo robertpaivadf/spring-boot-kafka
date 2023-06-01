@@ -12,7 +12,7 @@ public interface CarPostService {
 
     List<CarPostDTO> getCarSales();
 
-    void changeCarSales(CarPostDTO carPostDTO, long postId);
+    void changeCarSale(CarPostDTO carPostDTO, long postId);
 
     void removeCarSale(Long postId);
 
