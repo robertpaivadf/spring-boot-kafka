@@ -62,6 +62,12 @@ public class CarPostServiceImpl implements CarPostService{
     }
     private CarPostEntity mapCarDTOToEntity(CarPostDTO item) {
         CarPostEntity carPostEntity = new CarPostEntity();
+        ownerPostRepository.findById(item.getOwnerId()).ifPresentOrElse(a -> {
+            carPostEntity.setOwnerPost(a);
+            carPostEntity.setContact(a.getContactNumber());
+        }, ()->{
+            throw new RuntimeException();
+        });
         BeanUtils.copyProperties(item, carPostEntity);
         return carPostEntity;
     }
