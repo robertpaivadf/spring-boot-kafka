@@ -67,13 +67,73 @@
 			"response": []
 		},
 		{
+			"name": "PostCar 3",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"model\":\"Focus\",\r\n    \"brand\":\"Ford\",\r\n    \"price\": 40000.00,\r\n    \"description\":\"semi-novo\",\r\n    \"engineVersion\":\"1.0\",\r\n    \"city\":\"Brasília\",\r\n    \"createdDate\":\"\",\r\n    \"ownerId\":\"2\",\r\n    \"ownerName\":\"Thomas\",\r\n    \"ownerType\":\"Particular\",\r\n    \"contact\":\"777-888-999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8085/api/car/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"car",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "PostCar 4",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"model\":\"Uno\",\r\n    \"brand\":\"Fiat\",\r\n    \"price\": 20000.00,\r\n    \"description\":\"semi-novo o melhor de SP\",\r\n    \"engineVersion\":\"1.0\",\r\n    \"city\":\"São Bernardo\",\r\n    \"createdDate\":\"\",\r\n    \"ownerId\":\"2\",\r\n    \"ownerName\":\"Thomas\",\r\n    \"ownerType\":\"Particular\",\r\n    \"contact\":\"777-888-999\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8085/api/car/post",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8085",
+					"path": [
+						"api",
+						"car",
+						"post"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "PostOwner",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"name\":\"Teste 1\",\r\n    \"type\":\"Profissional\",\r\n    \"contactNumber\":\"999.888.999\"\r\n}",
+					"raw": "{\r\n    \"name\":\"Thomas\",\r\n    \"type\":\"Particular\",\r\n    \"contactNumber\":\"777.888.999\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
